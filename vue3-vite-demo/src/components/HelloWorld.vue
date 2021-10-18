@@ -1,9 +1,23 @@
+<!--
+ * @Date: 2021-10-12 10:45:32
+ * @LastEditTime: 2021-10-18 20:41:13
+ * @Description: 
+-->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import {useDark} from '../hooks/useDark'
 
 defineProps<{ msg: string }>()
 
 const count = ref(0)
+
+const dark = useDark()
+
+onMounted(()=>{
+  dark.value = !dark.value
+  console.log("🚀 ~ dark", dark)
+
+})
 </script>
 
 <template>

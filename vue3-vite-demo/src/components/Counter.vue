@@ -1,6 +1,6 @@
 <!--
  * @Date: 2021-10-12 10:45:32
- * @LastEditTime: 2021-10-18 17:35:27
+ * @LastEditTime: 2021-10-18 20:37:41
  * @Description: 
 -->
 <script lang="ts">
@@ -84,7 +84,7 @@ export default defineComponent({
     return { msg: "setup demo" };
   },
   mounted() {
-    let count = 0
+    let count = 3
     const timer = setInterval(() => {
       this.increment();
       this.state.id = Math.random()
