@@ -1,6 +1,6 @@
 <!--
  * @Date: 2021-10-12 10:45:32
- * @LastEditTime: 2021-10-18 20:41:13
+ * @LastEditTime: 2021-11-29 17:52:10
  * @Description: 
 -->
 <script setup lang="ts">
@@ -22,7 +22,15 @@ onMounted(()=>{
 
 <template>
   <h1>{{ msg }}</h1>
-
+  <el-row>
+    <el-button>Default</el-button>
+    <el-button type="primary">Primary</el-button>
+    <el-button type="success">Success</el-button>
+    <el-button type="info">Info</el-button>
+    <el-button type="warning">Warning</el-button>
+    <el-button type="danger">Danger</el-button>
+    <el-button>中文</el-button>
+  </el-row>
   <p>
     Recommended IDE setup:
     <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>

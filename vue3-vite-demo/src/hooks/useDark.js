@@ -1,6 +1,6 @@
 /*
  * @Date: 2021-10-18 20:35:32
- * @LastEditTime: 2021-10-20 11:33:10
+ * @LastEditTime: 2021-10-20 11:32:51
  * @Description: 
  */
 
@@ -8,8 +8,8 @@ import { ref, watch, computed, onUnmounted } from 'vue'
 
 export function useDark() {
   const system = usePreferDark()
-  console.log("🚀 ~ useDark ~ system", system)
   const setting = useLocalStorage('setting-dark', 'auto')
+  console.log("🚀 ~ useDark ~ setting", setting)
 
   const dark = computed({
     get() {
@@ -42,7 +42,7 @@ export function usePreferDark() {
   return dark
 }
 
-export function useLocalStorage(key: string, defaultValue: any) {
+export function useLocalStorage(key, defaultValue) {
   const data = ref(localStorage.getItem(key) ?? defaultValue)
 
   watch(data, () => localStorage.setItem(key, data.value))
