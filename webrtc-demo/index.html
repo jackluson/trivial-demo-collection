@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+  <video autoplay playsinline></video>
+  </body>
+  <script>
+    var constraints = {video: true};
+    var video = document.querySelector("video");
+    function successCallback(stream) {
+      console.log("stream", stream);
+      console.log("video", video);
+      try {
+        video.srcObject = stream;
+      } catch (error) {
+        video.src = window.URL.createObjectURL(stream);
+      }
+    }
+
+    function errorCallback(error) {
+      console.log("navigator.getUserMedia error: ", error);
+    }
+
+    navigator.getUserMedia(constraints, successCallback, errorCallback);
+    // navigator.mediaDevices.getUserMedia(constraints).then(successCallback).catch(errorCallback);
+  </script>
+</html> 
