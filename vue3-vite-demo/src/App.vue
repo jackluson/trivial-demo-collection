@@ -1,15 +1,27 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
+
 import HelloWorld from "./components/HelloWorld.vue";
+import HelloWorldJSX from "./components/HelloWorld-JSX.vue";
+console.log("🚀 ~ file: App.vue ~ line 5 ~ HelloWorldJSX", HelloWorldJSX)
 import Counter from "./components/Counter.vue";
+import CounterJS from "./components/CounterJS.vue";
+import Table from './components/Table.vue'
+defineExpose({
+  name: 'MobileGameSwitchMgr'
+})
 </script>
 
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   <hr />
+  <HelloWorldJSX/>
+  <hr>
+  <h3>Element plus</h3>
+  <Table/>
+  <hr>
   <Counter :init="3" />
+  <CounterJS />
 </template>
 
 <style>
