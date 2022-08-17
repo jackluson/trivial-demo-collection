@@ -1,2 +1,4 @@
 node_modules/
 email.sh
+
+__pycache__/

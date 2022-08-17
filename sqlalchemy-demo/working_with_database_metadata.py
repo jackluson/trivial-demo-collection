@@ -42,7 +42,7 @@ def createWithMetadata():
     return metadata_obj, user_table, address_table
 
 
-def createWithORM():
+def createWithORM(isCreateTable=True):
     mapper_registry = registry()
     Base = mapper_registry.generate_base()
 
@@ -74,6 +74,7 @@ def createWithORM():
     # the identical MetaData object is also present on the
     # declarative base
     Base.metadata.create_all(engine)
+    return User, Address, Base
 
 
 def createWithHybird():
