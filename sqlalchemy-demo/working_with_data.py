@@ -59,9 +59,9 @@ def insert_data():
         )
         result = conn.execute(insert_stmt)
         # print(insert_stmt)
-        print(insert_stmt.returning(
+        print('returning-->', insert_stmt.returning(
             address_table.c.id, address_table.c.email_address))
-        conn.commit()
+        commitRes = conn.commit()
 
 
 def selectWithCore():
