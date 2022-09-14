@@ -7,6 +7,9 @@ Author: luxuemin2108@gmail.com
 -----
 Copyright (c) 2022 Camel Lu
 '''
-from sqlalchemy import create_engine
 
-engine = create_engine("sqlite+pysqlite:///:memory:", echo=True, future=True)
+from sqlalchemy import create_engine
+url = "postgresql://admin:rootroot@localhost:5432/postgres"
+# url = "mysql+pysqlite:///:memory:"
+
+engine = create_engine(url, echo=True, future=True)
