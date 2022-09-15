@@ -11,9 +11,10 @@ import os
 from PIL import Image
 from datetime import date, datetime, timedelta
 import imagehash
+from skimage import io
+from sewar.full_ref import uqi, ssim, mse, psnr, msssim, sam, vifp
 
-dir = os.getcwd() + '/detact_similar/'
-print("dir", dir)
+dir = os.getcwd() + '/detact_image_similar/'
 
 img_dir = dir + 'img/'
 
@@ -107,9 +108,45 @@ def use_imagehash():
     else:
         return False
 
-# def use_sewar():
+
+def use_sewar():
+    imgs = os.listdir(img_dir)
+    for img_file in imgs:
+        print("img_file", img_file)
+        img_path_1 = img_dir + img_file
+        # img1 = Image.open(img_path_1)
+        img1 = io.imread(fname=img_path_1)
+        level1 = img_file[-10:-9]
+        for filename in imgs:
+            if img_file == filename:
+                continue
+            level2 = filename[-10:-9]
+            img_path_2 = img_dir + filename
+            # img2 = Image.open(
+            #     img_path_2)
+            img2 = io.imread(fname=img_path_2)
+            res_ssim = ssim(img1, img2)
+            res_mse = mse(img1, img2)
+            res_uqi = uqi(img1, img2)
+            res_psnr = psnr(img1, img2)  # 不适合
+            res_sam = sam(img1, img2)
+            # res_vifp = vifp(img1, img2)
+
+            print("res", level1, level2, res_uqi, res_sam)
+            if res_uqi > 0.98 and res_sam < 0.11:
+                # res_level = level2
+                assert level2 == level1, "level2 != level1"
+            else:
+                assert level2 != level1, "level2 == level1"
+
+            # if (res_ssim[0] > 0.9 or res_ssim[1] > 0.9) and level2 != level1:
+            #     print("high:", level1, level2, res_ssim,
+            #           res_mse, res_uqi, res_sam, res_psnr)
+            # if level1 == level2 and (res_ssim[0] <= 0.9 or res_ssim[1] <= 0.9):
+            #     print("same:", level1, level2, res_ssim,
+            #           res_mse, res_uqi, res_sam, res_psnr)
 
 
 if __name__ == '__main__':
-    res = use_imagehash()
+    res = use_sewar()
     print("res", res)
